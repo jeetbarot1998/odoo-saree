@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Sync Cron Job -->
+    <record id="ir_cron_sync_offline_records" model="ir.cron">
+        <field name="name">Sync Offline Records</field>
+        <field name="model_id" ref="model_multi_db_sync_manager"/>
+        <field name="state">code</field>
+        <field name="code">model.sync_offline_records()</field>
+        <field name="interval_number">15</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="priority">5</field>
+    </record>
+
+    <!-- Product Sync Cron Job -->
+    <record id="ir_cron_sync_products" model="ir.cron">
+        <field name="name">Sync Products</field>
+        <field name="model_id" ref="model_multi_db_sync_manager"/>
+        <field name="state">code</field>
+        <field name="code">model._sync_model_records('product.template')</field>
+        <field name="interval_number">30</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="priority">10</field>
+    </record>
+
+    <!-- POS Orders Sync Cron Job -->
+    <record id="ir_cron_sync_pos_orders" model="ir.cron">
+        <field name="name">Sync POS Orders</field>
+        <field name="model_id" ref="model_multi_db_sync_manager"/>
+        <field name="state">code</field>
+        <field name="code">model._sync_model_records('pos.order')</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="priority">1</field>
+    </record>
+</odoo>

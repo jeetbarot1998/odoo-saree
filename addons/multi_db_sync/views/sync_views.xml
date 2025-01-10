@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sync Status Field for List Views -->
+    <record id="view_sync_status_tree" model="ir.ui.view">
+        <field name="name">sync.status.tree</field>
+        <field name="model">sync.tracking.mixin</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sync_status" widget="badge"
+                       decoration-success="sync_status == 'synced'"
+                       decoration-warning="sync_status == 'pending'"
+                       decoration-danger="sync_status == 'error'"/>
+                <field name="last_sync_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Sync Form View -->
+    <record id="view_sync_status_form" model="ir.ui.view">
+        <field name="name">sync.status.form</field>
+        <field name="model">sync.tracking.mixin</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="sync_status"/>
+                    <field name="last_sync_date"/>
+                    <field name="sync_error" attrs="{'invisible': [('sync_error', '=', False)]}"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Inherit Product Template Form -->
+    <record id="product_template_sync_form" model="ir.ui.view">
+        <field name="name">product.template.sync.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position="inside">
+                <div>
+                    <field name="sync_status" widget="badge"/>
+                    <field name="last_sync_date"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit POS Order Form -->
+    <record id="pos_order_sync_form" model="ir.ui.view">
+        <field name="name">pos.order.sync.form</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="sync_status" widget="badge"/>
+                <field name="last_sync_date"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Purchase Order Form -->
+    <record id="purchase_order_sync_form" model="ir.ui.view">
+        <field name="name">purchase.order.sync.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="sync_status" widget="badge"/>
+                <field name="last_sync_date"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
