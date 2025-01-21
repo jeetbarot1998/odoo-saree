@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--views/sync_views.xml-->
 <odoo>
     <!-- Sync Status Field for List Views -->
     <record id="view_sync_status_tree" model="ir.ui.view">

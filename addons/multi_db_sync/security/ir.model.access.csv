@@ -1,6 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_multi_db_sync_manager_user,multi.db.sync.manager.user,model_multi_db_sync_manager,base.group_user,1,1,1,0
-access_multi_db_sync_manager_system,multi.db.sync.manager.system,model_multi_db_sync_manager,base.group_system,1,1,1,1
-access_database_connection_manager_system,database.connection.manager.system,model_database_connection_manager,base.group_system,1,1,1,1
-access_sync_tracking_mixin_user,sync.tracking.mixin.user,model_sync_tracking_mixin,base.group_user,1,1,1,0
-access_sync_tracking_mixin_system,sync.tracking.mixin.system,model_sync_tracking_mixin,base.group_system,1,1,1,1
+access_sync_tracking_mixin_user,sync.tracking.mixin user,model_sync_tracking_mixin,multi_db_sync.group_multi_db_sync_user,1,1,1,0
+access_sync_tracking_mixin_manager,sync.tracking.mixin manager,model_sync_tracking_mixin,multi_db_sync.group_multi_db_sync_manager,1,1,1,1
+access_database_connection_manager_user,database.connection.manager user,model_database_connection_manager,multi_db_sync.group_multi_db_sync_user,1,0,0,0
+access_database_connection_manager_manager,database.connection.manager manager,model_database_connection_manager,multi_db_sync.group_multi_db_sync_manager,1,1,1,1
+access_database_sync_user,database.sync user,model_database_sync,multi_db_sync.group_multi_db_sync_user,1,1,0,0
+access_database_sync_manager,database.sync manager,model_database_sync,multi_db_sync.group_multi_db_sync_manager,1,1,1,1

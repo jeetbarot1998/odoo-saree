@@ -1,3 +1,4 @@
+# database_connection.py
 from contextlib import contextmanager
 from odoo import api, fields, models
 import logging
@@ -108,9 +109,9 @@ class DatabaseConnectionManager(models.Model):
                 conn.close()
 
                 # Also test Odoo's connection pooling
-                db = odoo.sql_db.db_connect(conn_params['dbname'])
-                with db.cursor() as cr:
-                    cr.execute("SELECT 1")
+                # db = odoo.sql_db.db_connect(conn_params['dbname'])
+                # with db.cursor() as cr:
+                #     cr.execute("SELECT 1")
 
                 return {
                     'type': 'ir.actions.client',

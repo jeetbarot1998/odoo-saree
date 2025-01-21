@@ -1,5 +1,7 @@
-from odoo import api, fields, models
+# sync_mixin.py
 import logging
+
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
